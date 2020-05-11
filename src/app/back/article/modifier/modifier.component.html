@@ -1,0 +1,56 @@
+
+<div class="container">
+  <h2 class="text-center my-3">Modifier un Article</h2>
+  <div class="row">
+      <div class="col-sm-12">
+          <form #f="ngForm" (ngSubmit)="onSubmitArticle(f)" (submit)="onFrmSubmit(f)" (reset)="onFrmReset(f)">
+              <div class="form-group">
+                  <label for="titre">Titre</label>
+                  <input class="form-control" type="text" name="titre" id="titre" value="" placeholder="titre" ngModel #titre="ngModel" required minlength="3" maxlength="30" (keyup)="onChange(f)" [ngClass]="{
+                  erreur: error.titre}">
+              </div>
+              <div class="form-group">
+                  <label for="contenu">Contenu</label>
+                  <input class="form-control" type="text" name="contenu" id="contenu" value="" placeholder="contenu" ngModel #contenu="ngModel" required minlength="3" maxlength="255" (keyup)="onChange(f)" [ngClass]="{
+                  erreur: error.contenu}">
+              </div>
+              <div class="form-group">
+                  <label for="nomDauteur">Auteur</label>
+                  <input name="nomDauteur" type="text" placeholder="nomDauteur" class="form-control" id="nomDauteur" ngModel #auteur="ngModel" required (keyup)="onChange(f)" [ngClass]="{erreur: error.nomDauteur}">
+              </div>
+              <div class="form-group">
+                  <label for="status">Status</label>
+                  <select class="form-control" placeholder="status" id="status" name="status" ngModel #status="ngModel" required (keyup)="onChange(f)" [ngClass]="{
+                  erreur: error.status}">
+              <option>Publié</option>
+              <option>Brouillon</option>
+              </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary m-2">Ajouter</button>
+              <button routerLink="/admin/article/liste" type="reset" class="btn btn-danger m-2">Annuler</button>
+
+          </form>
+          <div *ngIf="erreur" class="alert alert-danger mt-5">
+              <div *ngIf="!titre.valid && titre.errors.required">Champ titre requis</div>
+              <div *ngIf="!titre.valid && titre.errors.minlength">
+                  Champ titre doit avoir 3 caractères minimum
+              </div>
+              <div *ngIf="!titre.valid && titre.errors.maxlength">
+                  Champ titre doit avoir 30 caractères maximum
+              </div>
+              <div *ngIf="!auteur.valid && auteur.errors.required">
+                  Champ auteur requis
+              </div>
+
+              <div *ngIf="!status.valid && status.errors.required">
+                  Champ status requis
+              </div>
+          </div>
+          <div *ngIf="success" class="alert alert-success mt-5">
+              Modification reussi!
+          </div>
+      </div>
+  </div>
+</div>
+

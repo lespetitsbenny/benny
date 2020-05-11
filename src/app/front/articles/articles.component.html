@@ -1,0 +1,23 @@
+<div class="container; card-background"  >
+
+  <div class="row mt-3">
+    <div class="col-12" style="margin-top:30px;">
+      <h1>{{ article[0].titre }}</h1> <!-- [0] permet de prendre en fonction de chaque id -->
+      <p>{{ article[0].contenu }}</p>
+      <img src="assets/{{article[0].img}}" alt="" class="img-fluid" >
+      <br><br>
+      <p>Publié le : {{article[0].dateCreation | date : 'shortDate'}}</p>
+<!--Une boucle commentaire pour que le commentaire de l'article concerné apparaisse-->
+        <div *ngFor="let commentaire of commentaires">
+          <div *ngIf="article[0]._id === commentaire.idArticle"> <!--condition pour que le commentaire s'affiche-->
+            <p>Commentaire :</p>
+            {{commentaire.contenu}}
+          </div>
+        </div>
+        <br><br>
+        <button routerLink="" class="btn btn-lg btn-primary">Retour à l'accueil</button>
+    </div>
+  </div>
+</div>
+
+

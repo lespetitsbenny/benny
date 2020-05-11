@@ -1,0 +1,61 @@
+<div class="row mt-3">
+  <div class="col-4">
+    <app-menu-dashboard></app-menu-dashboard>
+  </div>
+
+  <div class="col-8">
+      <h1>Gestion des utilisateurs </h1>
+
+      <!--Router au fichier aujouter un utilisateurs-->
+      <div>
+          <a routerLink="/admin/users/ajout" class="btn btn-primary">Ajouter un utilisateur</a>
+      </div>
+
+      <table class="table table-striped mt-3">
+
+          <tbody>
+
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>email</th>
+            <th>Rôle</th>
+            <th>Status</th>
+
+            <!--boucle pour afficher chaque utilisateur et ses caractéristique avec une pagination de 5 items par page-->
+
+              <tr *ngFor="let user of utilisateurs | paginate: { itemsPerPage: 5, currentPage: pageActuel } ">
+                  <td>
+                      {{ user.nom }}
+                  </td>
+
+                  <td>
+                      {{ user.prenom }}
+                  </td>
+
+                  <td>
+                      {{ user.email }}
+                  </td>
+
+                  <td>
+                      {{ user.role }}
+                  </td>
+
+                  <td>
+                      {{user.estActif}}
+                  </td>
+
+                  <td>
+                    <a [routerLink]="['/modifierUser']" routerLinkActive="router-link-active" (click)="onUpdateUtilisateur(utilisateur)" class="btn btn-warning">Modifier</a>
+                  </td>
+
+                  <td>
+                    <a (click)="onDeleteUtilisateur(utilisateur)" class="btn btn-danger">Supprimer</a>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <pagination-controls (pageChange) = "pageActuel = $event"></pagination-controls>
+  </div>
+</div>
+
+<!-- onUpdate et onDelete sont déclarer dans le fichier ts c'est le CRUD-->

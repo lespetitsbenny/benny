@@ -1,0 +1,38 @@
+
+
+<div class="row">
+
+ <div class="col-12 text-center" >
+   <!--lien image qui se trouve dans le fichier assets-->
+      <img src="assets/lesPetitsBenny.jpg"alt="">
+  </div>
+</div>
+
+<br><br>
+
+<div class="container, card-background">
+
+  <div class="row mt-3" >
+    <!--creation de boucle pour l'apparition de chaque article avec un pagination de 5 articles par page-->
+
+    <article class="col-6" *ngFor="let article of articles | paginate: { itemsPerPage: 5, currentPage: pageActuel }">
+
+      <img [src]="article.url" alt="" class="img-fluid">
+
+        <tr>
+      <img class="col-4" class="img-fluid" src="assets/{{article.img}}" alt=""  style="width: 100%;">
+        <br><br>
+          <h3 class="h6 col-4 text-center">{{article.titre}}</h3>
+
+            <td class="col-4">{{article.contenu}}</td>
+
+            <!--lien vers une page où seul l'article choisis apparaitra grâce à l'id-->
+              <a [routerLink]="['/article', article._id]" class="btn btn-secondary">Voir plus</a>
+        </tr>
+
+    </article>
+  </div>
+    <!--pagination-->
+    <pagination-controls (pageChange) = "pageActuel = $event"></pagination-controls>
+
+</div>

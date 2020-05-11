@@ -1,0 +1,34 @@
+<div class="row ">
+  <div class="col-4">
+      <app-menu-dashboard></app-menu-dashboard> <!--balise qui nous permet de récupérer ce qui est dans le fichier html menu-dashboard soit la colonne de gauche dans le back-->
+  </div>
+
+  <div class="col-4">
+      <h1>Accueil BackOffice</h1>
+  </div>
+
+  <div class="col-4">
+      <h1>Statistiques</h1>
+    <table>
+
+        <tr class=" border-danger">
+          <td>Nombre d'article : {{nbrArticles.length}}</td> <!--length: pour avoir le nombre d'articles au total-->
+        </tr>
+
+        <tr>
+          <td>Nombre d'utilisateur : {{nbrUsers.length}}</td> <!--nbrX déclarer dans le fichier ts-->
+        </tr>
+
+        <tr>
+          <td>Commentaires : {{nbrCommentaires.length}}</td>
+        </tr>
+
+    </table>
+
+  <h1>Flux RSS</h1>
+
+      <div class="md-form">
+  <textarea type="text" id="form8" class="md-textarea form-control" mdbInput> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi totam laudantium harum, eius fugiat earum ea odit saepe repudiandae et delectus hic? Nobis quod sequi illo rem incidunt veritatis ratione. </textarea>
+      </div>
+  </div>
+</div>

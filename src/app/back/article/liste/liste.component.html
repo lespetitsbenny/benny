@@ -1,0 +1,52 @@
+<div class="row mt-3">
+  <div class="col-4">
+      <app-menu-dashboard></app-menu-dashboard> <!--balise qui nous permet de récupérer ce qui est dans le fichier html menu-dashboard soit la colonne de gauche dans le back-->
+  </div>
+  <div class="col-8">
+      <h1>Gestion des articles </h1>
+      <div>
+
+        <!--lien qui  menera à la page ajouter un article, à l'aide de routerlink, path déclarer dans app.module.ts-->
+          <a routerLink="/admin/article/ajouter" class="btn btn-primary">Ajouter un article</a>
+      </div>
+
+      <table class="table table-striped mt-3">
+          <tbody>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Status</th>
+            <th>Date de creation</th>
+
+            <!--je fais une boucle pour que chaque article apparaisse avec son propre id, titre, nomDauteur ect... à l'aide de l'interpolation {{}}-->
+              <tr *ngFor="let article of articles | paginate: { itemsPerPage: 5, currentPage: pageActuel }">
+            <!-- pagination avec déclaration de 5 items par page maximum -->
+                  <td>
+                      {{ article._id }} <!-- attention à bien reprendre les même termes déclaré dans la base de donnée -->
+                  </td>
+                  <td>
+                      {{ article.titre }}
+                    </td>
+                    <td>
+                      {{ article.nomAuteur }}
+                    </td>
+                    <td>
+                      {{ article.estPublie }}
+                    </td>
+                    <td>
+                      {{ article.dateCreation | date : 'short' }} <!-- short : pour avoir juste le jour, mois et année-->
+                  </td>
+                  <td>
+                    <!--bouton pour modifier l'article à l'aide de onUpdateArticle déclarer dans le CRUD et le router qui amenera à la page modificatiion-->
+                    <button [routerLink]="['/modifier']" routerLinkActive="router-link-active" (click)="onUpdateArticle(article)"  class="btn btn-warning">Modifier</button>
+                  </td>
+                  <td>
+                    <!--bouton pour supprimer l'article à l'aide de onDeleteArticle déclarer dans le CRUD-->
+                    <button (click)="onDeleteArticle(article)" class="btn btn-danger">Supprimer</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+        <pagination-controls (pageChange) = "pageActuel = $event"></pagination-controls> <!--pagination-->
+  </div>
+</div>

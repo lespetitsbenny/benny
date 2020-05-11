@@ -1,0 +1,34 @@
+
+<nav class="navbar navbar-expand-lg bg-light navbar-light">
+  <a class="navbar-brand" style="color: black;">👕 Les Petits Benny</a>
+
+  <button class="navbar-toggler" (click)="toogleMenu(menu)">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" #menu>
+      <ul class="navbar-nav mr-auto" style="list-style:none;"> <!--mr-auto pour bien espacer les éléments dans le menu -->
+          <li class="nav-item">
+              <a routerLink="/" class="nav-link" style="color: black;">Accueil</a>
+          </li>
+      </ul>
+
+      <ul class="navbar-nav" style="list-style:none;">
+          <li class="nav-item">
+            <a routerLink="/contact" class="nav-link"style="color: black;">Nous contacter</a>
+          </li>
+      </ul>
+
+      <ul class="navbar-nav" style="list-style:none;">
+        <li class="nav-item">
+            <a routerLink="/login" class="nav-link" style="color: black;">Login</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav"style="list-style:none;">
+          <li class="nav-item">
+              <a routerLink="/admin" class="nav-link" style="color: black;">Admin</a>
+          </li>
+      </ul>
+  </div>
+</nav>
+

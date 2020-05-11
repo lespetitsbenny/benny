@@ -1,0 +1,16 @@
+/* style necessaire*/
+body{
+  height: 100%;
+  /* image de fond */
+  background-image: url("/assets/background.jpg");
+
+  /* pour que ça prenne toute la page  */
+  height: 100%;
+
+  /* echelle et position de l'image de fond */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0,01;
+}
+
